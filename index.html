@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Super Jump Adventure</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+    <main class="game-container">
+
+        <!-- Game Title -->
+        <h1>⭐ Super Jump Adventure ⭐</h1>
+
+        <!-- Game Score Board -->
+        <div class="hud">
+
+            <div class="hud-item">
+                🪙 Coins:
+                <span id="coins">0</span>
+            </div>
+
+            <div class="hud-item">
+                ❤️ Lives:
+                <span id="lives">3</span>
+            </div>
+
+            <div class="hud-item">
+                🏁 Level:
+                <span id="level">1</span>
+            </div>
+
+        </div>
+
+        <!-- Main Game Screen -->
+        <div class="game-frame">
+
+            <canvas
+                id="game"
+                width="900"
+                height="450">
+            </canvas>
+
+            <!-- Start / Game Over Screen -->
+            <div id="overlay" class="overlay">
+
+                <h2 id="message">
+                    🎮 Super Jump Adventure
+                </h2>
+
+                <p id="description">
+                    Collect coins, defeat enemies,
+                    and reach the finish flag!
+                </p>
+
+                <button id="startBtn">
+                    ▶ Start Game
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Mobile Game Controls -->
+        <div class="controls">
+
+            <div class="movement-buttons">
+
+                <button
+                    id="leftBtn"
+                    aria-label="Move Left">
+                    ◀
+                </button>
+
+                <button
+                    id="rightBtn"
+                    aria-label="Move Right">
+                    ▶
+                </button>
+
+            </div>
+
+            <button
+                id="jumpBtn"
+                aria-label="Jump">
+                ⬆ JUMP
+            </button>
+
+        </div>
+
+        <!-- Game Instructions -->
+        <div class="instructions">
+
+            <h3>🎮 How to Play</h3>
+
+            <p>
+                💻 Computer:
+                Arrow Keys / A D to Move
+            </p>
+
+            <p>
+                ⬆ Space / Up Arrow to Jump
+            </p>
+
+            <p>
+                📱 Mobile:
+                Use On-Screen Buttons
+            </p>
+
+            <p>
+                🪙 Collect Coins and Avoid Enemies!
+            </p>
+
+        </div>
+
+        <footer>
+            <p>Super Jump Adventure © 2026</p>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+
+</body>
+</html>

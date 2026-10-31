@@ -1,0 +1,366 @@
+
+/* ==========================
+   SUPER JUMP ADVENTURE
+   GAME DESIGN
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #101b3b,
+        #30205c,
+        #162d52
+    );
+
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+/* Main Game Container */
+
+.game-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Game Title */
+
+h1 {
+    font-size: clamp(23px, 4vw, 40px);
+    color: #ffdd55;
+    margin-bottom: 20px;
+
+    text-shadow:
+        3px 3px 0 #c05b00,
+        5px 5px 10px #00000080;
+}
+
+/* Score Board */
+
+.hud {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 15px;
+    margin-bottom: 15px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 2px solid #ffffff30;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px #00000030;
+}
+
+.hud-item {
+    font-size: 19px;
+    font-weight: bold;
+
+    background: #ffffff15;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.hud-item span {
+    color: #ffdf54;
+    margin-left: 5px;
+}
+
+/* Main Game Frame */
+
+.game-frame {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    background: #87ceeb;
+
+    border: 5px solid #ffda42;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 20px #ffdd5540,
+        0 15px 35px #00000060;
+}
+
+/* Canvas */
+
+#game {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #87ceeb;
+}
+
+/* Start / Game Over Overlay */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(10, 20, 50, 0.88);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+    z-index: 10;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay h2 {
+    color: #ffdd55;
+    font-size: clamp(20px, 4vw, 36px);
+    margin-bottom: 15px;
+
+    text-shadow: 2px 3px #000;
+}
+
+.overlay p {
+    font-size: clamp(12px, 2vw, 18px);
+    margin-bottom: 20px;
+    max-width: 550px;
+    line-height: 1.5;
+}
+
+/* Start Button */
+
+#startBtn {
+    background: linear-gradient(
+        180deg,
+        #ffe66b,
+        #ffb300
+    );
+
+    color: #202040;
+
+    padding: 15px 35px;
+    font-size: 20px;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 0 #ad6a00;
+
+    transition: transform 0.15s;
+}
+
+#startBtn:hover {
+    transform: scale(1.05);
+}
+
+#startBtn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #ad6a00;
+}
+
+/* Mobile Controls */
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 20px;
+    padding: 10px;
+
+    gap: 15px;
+}
+
+.movement-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.controls button {
+    min-width: 85px;
+    height: 65px;
+
+    background: linear-gradient(
+        180deg,
+        #ffdc56,
+        #ffa500
+    );
+
+    color: #162347;
+
+    border: none;
+    border-radius: 15px;
+
+    font-size: 26px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 0 #a86900;
+
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.controls button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #a86900;
+}
+
+/* Jump Button */
+
+#jumpBtn {
+    background: linear-gradient(
+        180deg,
+        #7cf7a4,
+        #21c86b
+    );
+
+    color: #06402b;
+
+    min-width: 145px;
+
+    box-shadow: 0 6px 0 #168647;
+}
+
+/* Instructions */
+
+.instructions {
+    margin-top: 25px;
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 15px;
+    border: 1px solid #ffffff25;
+}
+
+.instructions h3 {
+    color: #ffdd55;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.instructions p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #e4eaff;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 25px;
+    padding: 15px;
+    font-size: 13px;
+    color: #aeb9db;
+}
+
+/* Tablet Screens */
+
+@media (max-width: 768px) {
+
+    .game-container {
+        padding: 10px;
+    }
+
+    .hud {
+        padding: 10px;
+    }
+
+    .hud-item {
+        font-size: 15px;
+        padding: 8px 10px;
+    }
+
+    .controls button {
+        min-width: 75px;
+        height: 65px;
+    }
+
+    #jumpBtn {
+        min-width: 120px;
+    }
+}
+
+/* Mobile Screens */
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 23px;
+        margin-bottom: 15px;
+    }
+
+    .hud {
+        gap: 5px;
+        padding: 8px;
+    }
+
+    .hud-item {
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    .game-frame {
+        border-width: 3px;
+        border-radius: 10px;
+    }
+
+    .controls {
+        margin-top: 12px;
+        padding: 5px;
+        gap: 8px;
+    }
+
+    .movement-buttons {
+        gap: 8px;
+    }
+
+    .controls button {
+        min-width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    #jumpBtn {
+        min-width: 105px;
+        font-size: 18px;
+    }
+
+    .instructions {
+        padding: 12px;
+    }
+
+    .instructions h3 {
+        font-size: 18px;
+    }
+
+    .instructions p {
+        font-size: 13px;
+    }
+
+    #startBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
